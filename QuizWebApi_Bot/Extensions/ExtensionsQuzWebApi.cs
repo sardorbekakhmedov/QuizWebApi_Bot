@@ -1,0 +1,21 @@
+﻿using QuizWebApi_Bot.HelperServices;
+using QuizWebApi_Bot.Interfaces;
+using QuizWebApi_Bot.Repositories;
+
+namespace QuizWebApi_Bot.Extensions;
+
+public static class ExtensionsQuzWebApi
+{
+    public static void AddQuizWebApiServices(this IServiceCollection services, IConfiguration configuration)
+    {
+       services.AddSwaggerGenWithToken();
+       services.AddControllers()
+           .AddNewtonsoftJson();
+       services.AddEndpointsApiExplorer();
+
+       services.AddScoped<IQuestionRepository, QuestionRepository>();
+       services.AddScoped<IFileManager, FileManager>();
+       services.AddScoped<IQuestionManger, QuestionManger>();
+
+    }
+}
