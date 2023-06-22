@@ -11,4 +11,7 @@ public class Question
     public required List<string> Choices { get; set; }
     public required string CorrectAnswer { get; set; }
     public string? ImagePath { get; set; }
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }

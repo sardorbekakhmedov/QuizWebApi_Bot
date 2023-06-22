@@ -10,5 +10,6 @@ public interface IQuestionRepository
     Task<Question?> GetQuestionByIdAsync(Guid questionId);
     Task<QuestionModel> UpdateQuestionAsync(Guid questionId, UpdateQuestionModel model);
     Task DeleteQuestionAsync(Guid questionId);
-    Task<List<QuestionModel>> GetQuestions();
+    Task<List<QuestionModel>> GetQuestionsAsync();
+    Task<QuestionModel> GetRandomQuestionAsync();
 }

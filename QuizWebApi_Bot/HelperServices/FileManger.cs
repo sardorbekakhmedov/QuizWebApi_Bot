@@ -31,7 +31,7 @@ public class FileManager : IFileManager
             await File.WriteAllBytesAsync(Path.Combine(RootFolderName, folderName, newFileName), ms.ToArray());
         }
 
-        return $"/{folderName}/{newFileName}";
+        return $"{RootFolderName}/{folderName}/{newFileName}";
     }
 
 }

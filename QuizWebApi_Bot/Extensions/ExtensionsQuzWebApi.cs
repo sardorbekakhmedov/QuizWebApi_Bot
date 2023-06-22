@@ -11,11 +11,14 @@ public static class ExtensionsQuzWebApi
        services.AddSwaggerGenWithToken();
        services.AddControllers()
            .AddNewtonsoftJson();
+
        services.AddEndpointsApiExplorer();
 
        services.AddScoped<IQuestionRepository, QuestionRepository>();
+       services.AddScoped<IUserRepository, UserRepository>();
        services.AddScoped<IFileManager, FileManager>();
        services.AddScoped<IQuestionManger, QuestionManger>();
 
+       services.AddHostedService<HandleBackgroundService>();
     }
 }

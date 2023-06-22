@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using System.Diagnostics.Eventing.Reader;
+using MongoDB.Driver;
 using QuizWebApi_Bot.Entities;
 using QuizWebApi_Bot.Interfaces;
 using QuizWebApi_Bot.Models;
@@ -10,6 +11,7 @@ public class QuestionRepository : IQuestionRepository
     private readonly IQuestionManger _questionManger;
     private readonly IFileManager _fileManager;
     private readonly IMongoCollection<Question> _questionCollection;
+    private readonly IMongoCollection<UserStats> _userStats;
 
     public QuestionRepository(IQuestionManger questionManger, IFileManager fileManager)
     {
@@ -18,6 +20,16 @@ public class QuestionRepository : IQuestionRepository
         var client = new MongoClient("mongodb://root:password@localhost:27017");
         var db = client.GetDatabase("quizwebapi_db");
         _questionCollection = db.GetCollection<Question>("questions");
+        _userStats = db.GetCollection<UserStats>("user_stats");
+    }
+
+    public async Task<QuestionModel> GetRandomQuestionAsync()
+    {
+        var questions = await GetQuestionsAsync();
+
+        var randomIndex = Random.Shared.Next(questions.Count);
+
+        return questions[randomIndex];
     }
 
     public async Task<Guid> AddQuestionAsync(CreateQuestionModel model)
@@ -70,7 +82,7 @@ public class QuestionRepository : IQuestionRepository
         return _questionManger.MapToQuestionModel(question);
     }
 
-    public async Task<List<QuestionModel>> GetQuestions()
+    public async Task<List<QuestionModel>> GetQuestionsAsync()
     {
         var questions = await (await _questionCollection.FindAsync(_ => true)).ToListAsync();
 

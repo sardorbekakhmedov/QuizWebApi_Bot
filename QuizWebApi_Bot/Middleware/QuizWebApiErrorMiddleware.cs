@@ -5,8 +5,7 @@ public class QuizWebApiErrorMiddleware
     private readonly RequestDelegate _next;
     private readonly ILogger<QuizWebApiErrorMiddleware> _logger;
 
-    public QuizWebApiErrorMiddleware(RequestDelegate next,
-        ILogger<QuizWebApiErrorMiddleware> logger)
+    public QuizWebApiErrorMiddleware(RequestDelegate next, ILogger<QuizWebApiErrorMiddleware> logger)
     {
         _next = next;
         _logger = logger;
@@ -14,7 +13,6 @@ public class QuizWebApiErrorMiddleware
 
     public async Task Invoke(HttpContext httpContext)
     {
-
         try
         {
             await _next(httpContext);
@@ -28,7 +26,6 @@ public class QuizWebApiErrorMiddleware
             {
                 Error = e.Message,
             });
-
         }
     }
 }
