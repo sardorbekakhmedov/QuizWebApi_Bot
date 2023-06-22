@@ -1,8 +1,5 @@
-﻿using MongoDB.Driver;
-using QuizWebApi_Bot.Entities;
-using QuizWebApi_Bot.Interfaces;
+﻿using QuizWebApi_Bot.Interfaces;
 using Telegram.Bot;
-using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 using File = System.IO.File;
 using InputFile = Telegram.Bot.Types.InputFile;
@@ -22,7 +19,7 @@ public class HandleBackgroundService : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(5000), stoppingToken);
+            await Task.Delay(TimeSpan.FromMilliseconds(150000), stoppingToken);
             await SendMessageAsync(stoppingToken);
             Console.WriteLine("HandleBackgroundService is working!");
         }
@@ -42,7 +39,7 @@ public class HandleBackgroundService : BackgroundService
         foreach (var user in users)
         {
             Console.WriteLine("SendMessageAsync method is working!");
-            var questionId =  await SendQuestionAsync(user.UserId, botClient, serviceScope, questionService, cancellationToken);
+            var questionId = await SendQuestionAsync(user.UserId, botClient, serviceScope, questionService, cancellationToken);
             await userService.IncrementSentQuestionAsync(user.UserId);
             //  await userService.AddSentUserQuestionCollectionAsync(user, questionId, true);
         }

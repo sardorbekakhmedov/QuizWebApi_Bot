@@ -8,17 +8,17 @@ public static class ExtensionsQuzWebApi
 {
     public static void AddQuizWebApiServices(this IServiceCollection services, IConfiguration configuration)
     {
-       services.AddSwaggerGenWithToken();
-       services.AddControllers()
+        services.AddControllers()
            .AddNewtonsoftJson();
 
-       services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+        services.AddEndpointsApiExplorer();
 
-       services.AddScoped<IQuestionRepository, QuestionRepository>();
-       services.AddScoped<IUserRepository, UserRepository>();
-       services.AddScoped<IFileManager, FileManager>();
-       services.AddScoped<IQuestionManger, QuestionManger>();
+        services.AddScoped<IQuestionRepository, QuestionRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IFileManager, FileManager>();
+        services.AddScoped<IQuestionManger, QuestionManger>();
 
-       services.AddHostedService<HandleBackgroundService>();
+        services.AddHostedService<HandleBackgroundService>();
     }
 }

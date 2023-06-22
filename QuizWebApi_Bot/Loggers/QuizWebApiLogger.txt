@@ -716,3 +716,172 @@ Telegram.Bot.Exceptions.RequestException: Exception during making request
    at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
    at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
    at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 19:05:50.785 +05:00 [ERR] Internal QUIZ_WEB_API server error!
+Telegram.Bot.Exceptions.RequestException: Exception during making request
+ ---> System.Net.Http.HttpRequestException: Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера. (api.telegram.org:443)
+ ---> System.Net.Sockets.SocketException (10060): Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|281_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionAsync(Boolean async, CancellationToken requestCancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Telegram.Bot.TelegramBotClient.<MakeRequestAsync>g__SendRequestAsync|21_0[TResponse](HttpClient httpClient, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Telegram.Bot.TelegramBotClient.<MakeRequestAsync>g__SendRequestAsync|21_0[TResponse](HttpClient httpClient, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendTextMessageAsync(ITelegramBotClient botClient, ChatId chatId, String text, Nullable`1 messageThreadId, Nullable`1 parseMode, IEnumerable`1 entities, Nullable`1 disableWebPagePreview, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.Controllers.QuestionController.PostUpdate(Update update) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Controllers\QuestionController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at QuizWebApi_Bot.Middleware.QuizWebApiErrorMiddleware.Invoke(HttpContext httpContext) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Middleware\QuizWebApiErrorMiddleware.cs:line 18
+2023-06-22 19:06:11.995 +05:00 [ERR] Internal QUIZ_WEB_API server error!
+Telegram.Bot.Exceptions.RequestException: Exception during making request
+ ---> System.Net.Http.HttpRequestException: Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера. (api.telegram.org:443)
+ ---> System.Net.Sockets.SocketException (10060): Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|281_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.HttpConnectionWaiter`1.WaitForConnectionAsync(Boolean async, CancellationToken requestCancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at Telegram.Bot.TelegramBotClient.<MakeRequestAsync>g__SendRequestAsync|21_0[TResponse](HttpClient httpClient, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Telegram.Bot.TelegramBotClient.<MakeRequestAsync>g__SendRequestAsync|21_0[TResponse](HttpClient httpClient, HttpRequestMessage httpRequest, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendTextMessageAsync(ITelegramBotClient botClient, ChatId chatId, String text, Nullable`1 messageThreadId, Nullable`1 parseMode, IEnumerable`1 entities, Nullable`1 disableWebPagePreview, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.Controllers.QuestionController.PostUpdate(Update update) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Controllers\QuestionController.cs:line 35
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at QuizWebApi_Bot.Middleware.QuizWebApiErrorMiddleware.Invoke(HttpContext httpContext) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Middleware\QuizWebApiErrorMiddleware.cs:line 18
+2023-06-22 19:57:35.560 +05:00 [ERR] BackgroundService failed
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 19:57:35.566 +05:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 20:03:42.104 +05:00 [ERR] BackgroundService failed
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 20:03:42.117 +05:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 20:04:03.330 +05:00 [ERR] BackgroundService failed
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 20:04:03.339 +05:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 23:05:59.059 +05:00 [ERR] BackgroundService failed
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 23:05:59.069 +05:00 [FTL] The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the user
+   at Telegram.Bot.TelegramBotClient.MakeRequestAsync[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at Telegram.Bot.TelegramBotClientExtensions.SendPhotoAsync(ITelegramBotClient botClient, ChatId chatId, InputFile photo, Nullable`1 messageThreadId, String caption, Nullable`1 parseMode, IEnumerable`1 captionEntities, Nullable`1 hasSpoiler, Nullable`1 disableNotification, Nullable`1 protectContent, Nullable`1 replyToMessageId, Nullable`1 allowSendingWithoutReply, IReplyMarkup replyMarkup, CancellationToken cancellationToken)
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendQuestionAsync(Int64 userChatId, ITelegramBotClient botClient, AsyncServiceScope serviceScope, IQuestionRepository questionService, CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 62
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 45
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 42
+   at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 26
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-22 23:35:19.790 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-22 23:35:20.097 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-06-22 23:35:28.383 +05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at lambda_method1(Closure, Object, HttpContext, IServiceProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)

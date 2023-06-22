@@ -21,7 +21,7 @@ public class QuestionController : ControllerBase
     }
 
     [HttpPost("bot")]
-    public async Task<IActionResult> PostUpdate([FromBody] Update update)
+    public async Task<IActionResult> PostUpdate([FromBody] Update update, CancellationToken cts)
     {
         var bot = new TelegramBotClient("5674695715:AAEGpPEyu_tUbeJp_C4slf89laNWGq9PQM0");
 
@@ -32,12 +32,24 @@ public class QuestionController : ControllerBase
 
         if (messageText == "/start")
         {
-            await bot.SendTextMessageAsync(chatId, "🖐 Assalomu alekum, \nSizga har soatda bittadan savol yuboriladi");
+            await bot.SendTextMessageAsync(
+                chatId: chatId,
+                text: "🖐 Assalomu alekum, \nSizga har soatda bittadan savol yuboriladi",
+                cancellationToken: cts);
+
             await _userRepository.AddUserAsync(chatId, firstName ?? "No name");
+        }
+        else if (messageText == "/result")
+        {
+            var result = await _userRepository.GetUserStatsAsync(chatId);
+            await bot.SendTextMessageAsync(
+                chatId: chatId,
+                text: result,
+                cancellationToken: cts);
         }
         else if (messageText is not null && messageText.StartsWith("!_?answer?_!"))
         {
-            
+
             var user = await _userRepository.GetUserAsync(chatId);
             string[] array = messageText.Split(',');
 
@@ -46,26 +58,39 @@ public class QuestionController : ControllerBase
 
             await _userRepository.IncrementAnswerAsync(chatId);
 
-          //  await _userRepository.DeleteSentUserQuestionCollectionAsync(user, questionId);
+            //  await _userRepository.DeleteSentUserQuestionCollectionAsync(user, questionId);
             var question = await _questionRepository.GetQuestionByIdAsync(questionId);
 
             if (question != null)
             {
                 if (question.CorrectAnswer == answerData)
                 {
-                    await bot.SendTextMessageAsync(chatId, "Qoyil 👍  javobingiz to'g'ri  ✅");
+                    await bot.SendTextMessageAsync(
+                        chatId: chatId,
+                        text: "Qoyil 👍  javobingiz to'g'ri  ✅",
+                        cancellationToken: cts);
+
                     await _userRepository.IncrementCorrectAnswerAsync(chatId);
                 }
                 else
                 {
-                    await bot.SendTextMessageAsync(chatId, $"Afsus 🥵  javob no to'g'ri  ❌  " +
-                                                           $"\n\n To'gri javob:  {question.CorrectAnswer}," +
-                                                           $"\n\nJavob ta'rifi:  {question.Description}");
+                    await bot.SendTextMessageAsync(
+                        chatId: chatId,
+                        text: $"Afsus 🥵  javob no to'g'ri  ❌  " +
+                               $"\n\n To'gri javob:  {question.CorrectAnswer}," +
+                               $"\n\nJavob ta'rifi:  {question.Description}",
+                        cancellationToken: cts);
                 }
             }
         }
-        else 
-            await bot.SendTextMessageAsync(chatId, "$\"☢  No malum buyruq kiritildi!");
+        else
+        {
+            await bot.SendTextMessageAsync(
+                chatId: chatId,
+                text: "$\"☢  No malum buyruq kiritildi!",
+                cancellationToken: cts);
+
+        }
 
         return Ok();
     }

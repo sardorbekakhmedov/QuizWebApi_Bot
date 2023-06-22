@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Eventing.Reader;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using QuizWebApi_Bot.Entities;
 using QuizWebApi_Bot.Interfaces;
 using QuizWebApi_Bot.Models;
