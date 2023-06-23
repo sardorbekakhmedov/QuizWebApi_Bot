@@ -34,9 +34,9 @@ public class BotController : ControllerBase
             await bot.SendTextMessageAsync(
                 chatId: chatId,
                 text: "🖐 Assalomu alekum, \nSizga har soatda bittadan savol yuboriladi" +
-                      "\nO'z natijalaringizni ko'rish uchun ( /result ) buyru'gini yuboring" +
-                      "\nAgarda savol yuborishni toxtatishni xoxlasangiz ( /stopmessage ) buyrug'ini yuboring," +
-                      "\nAgarda siz qayta savol jo'natishni tiklamoqchi bolsangiz ( /startmessage ) buyru'gini yuboring",
+                      "\n\nO'z natijalaringizni ko'rish uchun  /result  buyrug'ini yuboring" +
+                      "\nSavol yuborishni to'xtatish uchun  /stopmessage  buyrug'ini yuboring," +
+                      "\nSavol jo'natishni tiklash uchun  /startmessage  buyrug'ini yuboring",
                 cancellationToken: cts);
 
             await _userRepository.AddUserAsync(chatId, firstName ?? "No name");
@@ -47,7 +47,7 @@ public class BotController : ControllerBase
 
             await bot.SendTextMessageAsync(
                 chatId: chatId,
-                text: " ⚠ Savol jo'natish tiklandi",
+                text: " ⚠ Savol jo'natish tiklandi!",
                 cancellationToken: cts);
         }
         else if (messageText == "/stopmessage")
@@ -56,8 +56,8 @@ public class BotController : ControllerBase
 
             await bot.SendTextMessageAsync(
                 chatId: chatId,
-                text: " ⚠  Siz savol jonatishni bekor qildingiz, \n" +
-                      "agarda siz qayta savol jo'natishni tiklamoqchi bolsangiz ( /startmessage ) buyru'gini yuboring",
+                text: " ⚠  Siz savol jo'natishni bekor qildingiz, \n" +
+                      "Agarda siz qayta savol jo'natishni tiklamoqchi bo'lsangiz /startmessage buyrug'ini yuboring",
                 cancellationToken: cts);
         }
         else if (messageText == "/result")
@@ -110,9 +110,7 @@ public class BotController : ControllerBase
                 chatId: chatId,
                 text: "$\"☢  No malum buyruq kiritildi!",
                 cancellationToken: cts);
-
         }
-
         return Ok();
     }
 
@@ -126,5 +124,4 @@ public class BotController : ControllerBase
 
         return (null, null, -1, -1, false);
     }
-
 }

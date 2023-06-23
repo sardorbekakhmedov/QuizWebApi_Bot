@@ -15,10 +15,22 @@ public class UserController : ControllerBase
     }
 
 
+    [HttpPost]
+    public async Task<IActionResult> AddUserAsync(long userChatId, string? userName)
+    {
+        return Ok(await _userRepository.AddUserAsync(userChatId, userName));
+    }
 
     [HttpGet("get_users")]
-    public async Task<IActionResult> GetAllUsers()
+    public async Task<IActionResult> GetAllUsersAsync()
     {
         return Ok(await _userRepository.GetAllUsersAsync());
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteUserAsync(long userChatId)
+    {
+        await _userRepository.DeleteUserAsync(userChatId);
+        return Ok();
     }
 }

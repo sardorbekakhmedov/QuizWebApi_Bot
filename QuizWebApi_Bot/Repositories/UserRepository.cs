@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using QuizWebApi_Bot.Entities;
 using QuizWebApi_Bot.Interfaces;
+using QuizWebApi_Bot.Models;
 
 namespace QuizWebApi_Bot.Repositories;
 
@@ -27,23 +28,34 @@ public class UserRepository : IUserRepository
         await _userStats.ReplaceOneAsync(filter, user);
     }
 
-    public async Task AddUserAsync(long userChatId, string userNAme)
+    public async Task<UserModel> AddUserAsync(long userChatId, string? userNAme)
     {
         var users = await (await _userStats.FindAsync(_ => true)).ToListAsync();
         var user = users.FirstOrDefault(user => user.UserId == userChatId);
 
         if (user is null)
         {
-            var newUser = new UserStats
+            user = new UserStats
             {
                 UserId = userChatId,
-                UserName = userNAme,
+                UserName = userNAme ?? "No name",
                 TotalQuestionsAnswered = 0,
                 CorrectlyAnswered = 0,
             };
 
-            await _userStats.InsertOneAsync(newUser);
+            await _userStats.InsertOneAsync(user);
         }
+
+        return new UserModel
+        {
+            UserId = user.UserId,
+            UserName = user.UserName,
+            CorrectlyAnswered = user.CorrectlyAnswered,
+            TotalQuestionsAnswered = user.TotalQuestionsAnswered,
+            TotalQuestionsSent = user.TotalQuestionsSent,
+            CreatedAt = user.CreatedAt,
+            UpdatedAt = user.UpdatedAt
+        };
     }
     /*
         public async Task AddSentUserQuestionCollectionAsync(UserStats user, Guid questionId, bool isAnswer)
@@ -134,5 +146,11 @@ public class UserRepository : IUserRepository
         var user = users.FirstOrDefault(user => user.UserId == userChatId);
 
         return user ?? throw new Exception("User not found!");
+    }
+
+    public async Task DeleteUserAsync(long userChatId)
+    {
+        var filter = Builders<UserStats>.Filter.Eq(id => id.UserId, userChatId);
+        await _userStats.DeleteOneAsync(filter);
     }
 }

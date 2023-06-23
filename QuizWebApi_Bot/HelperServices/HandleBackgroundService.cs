@@ -1,5 +1,4 @@
-﻿using System;
-using QuizWebApi_Bot.Interfaces;
+﻿using QuizWebApi_Bot.Interfaces;
 using Telegram.Bot;
 using Telegram.Bot.Types.ReplyMarkups;
 using File = System.IO.File;
@@ -20,7 +19,7 @@ public class HandleBackgroundService : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(7000), stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
             await SendMessageAsync(stoppingToken);
             Console.WriteLine("HandleBackgroundService is working!");
         }
