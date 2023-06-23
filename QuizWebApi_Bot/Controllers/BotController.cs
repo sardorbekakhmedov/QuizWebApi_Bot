@@ -98,8 +98,8 @@ public class BotController : ControllerBase
                     await bot.SendTextMessageAsync(
                         chatId: chatId,
                         text: $"Afsus 🥵  javob no to'g'ri  ❌  " +
-                               $"\n\n To'gri javob:  {question.CorrectAnswer}," +
-                               $"\n\nJavob ta'rifi:  {question.Description}",
+                               $"\n\n To'g'ri javob:  {question.CorrectAnswer}," +
+                               $"\n\nJavob tarifi:  {question.Description}",
                         cancellationToken: cts);
                 }
             }

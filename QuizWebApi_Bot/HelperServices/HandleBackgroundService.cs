@@ -29,7 +29,7 @@ public class HandleBackgroundService : BackgroundService
 
     private async Task SendMessageAsync(CancellationToken cancellationToken)
     {
-        var botClient = new TelegramBotClient("5674695715:AAEGpPEyu_tUbeJp_C4slf89laNWGq9PQM0");
+        var botClient = new TelegramBotClient("token");
 
         await using AsyncServiceScope serviceScope = _services.CreateAsyncScope();
 
