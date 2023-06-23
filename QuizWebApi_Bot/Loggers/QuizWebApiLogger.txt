@@ -160,3 +160,93 @@ Telegram.Bot.Exceptions.ApiRequestException: Forbidden: bot was blocked by the u
    at QuizWebApi_Bot.HelperServices.HandleBackgroundService.SendMessageAsync(CancellationToken cancellationToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 41
    at QuizWebApi_Bot.HelperServices.HandleBackgroundService.ExecuteAsync(CancellationToken stoppingToken) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\HelperServices\HandleBackgroundService.cs:line 23
    at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2023-06-23 12:08:54.374 +05:00 [ERR] Internal QUIZ_WEB_API server error!
+System.ArgumentNullException: Value cannot be null. (Parameter 'token')
+   at Telegram.Bot.TelegramBotClientOptions..ctor(String token, String baseUrl, Boolean useTestEnvironment)
+   at Telegram.Bot.TelegramBotClient..ctor(String token, HttpClient httpClient)
+   at QuizWebApi_Bot.Controllers.BotController.PostUpdate(Update update, CancellationToken cts) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Controllers\BotController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at QuizWebApi_Bot.Middleware.QuizWebApiErrorMiddleware.Invoke(HttpContext httpContext) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Middleware\QuizWebApiErrorMiddleware.cs:line 18
+2023-06-23 12:08:54.519 +05:00 [ERR] Internal QUIZ_WEB_API server error!
+System.ArgumentNullException: Value cannot be null. (Parameter 'token')
+   at Telegram.Bot.TelegramBotClientOptions..ctor(String token, String baseUrl, Boolean useTestEnvironment)
+   at Telegram.Bot.TelegramBotClient..ctor(String token, HttpClient httpClient)
+   at QuizWebApi_Bot.Controllers.BotController.PostUpdate(Update update, CancellationToken cts) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Controllers\BotController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at QuizWebApi_Bot.Middleware.QuizWebApiErrorMiddleware.Invoke(HttpContext httpContext) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Middleware\QuizWebApiErrorMiddleware.cs:line 18
+2023-06-23 12:08:56.649 +05:00 [ERR] Internal QUIZ_WEB_API server error!
+System.ArgumentNullException: Value cannot be null. (Parameter 'token')
+   at Telegram.Bot.TelegramBotClientOptions..ctor(String token, String baseUrl, Boolean useTestEnvironment)
+   at Telegram.Bot.TelegramBotClient..ctor(String token, HttpClient httpClient)
+   at QuizWebApi_Bot.Controllers.BotController.PostUpdate(Update update, CancellationToken cts) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Controllers\BotController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at QuizWebApi_Bot.Middleware.QuizWebApiErrorMiddleware.Invoke(HttpContext httpContext) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Middleware\QuizWebApiErrorMiddleware.cs:line 18
+2023-06-23 12:09:00.776 +05:00 [ERR] Internal QUIZ_WEB_API server error!
+System.ArgumentNullException: Value cannot be null. (Parameter 'token')
+   at Telegram.Bot.TelegramBotClientOptions..ctor(String token, String baseUrl, Boolean useTestEnvironment)
+   at Telegram.Bot.TelegramBotClient..ctor(String token, HttpClient httpClient)
+   at QuizWebApi_Bot.Controllers.BotController.PostUpdate(Update update, CancellationToken cts) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Controllers\BotController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at QuizWebApi_Bot.Middleware.QuizWebApiErrorMiddleware.Invoke(HttpContext httpContext) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Middleware\QuizWebApiErrorMiddleware.cs:line 18
+2023-06-23 12:09:08.902 +05:00 [ERR] Internal QUIZ_WEB_API server error!
+System.ArgumentNullException: Value cannot be null. (Parameter 'token')
+   at Telegram.Bot.TelegramBotClientOptions..ctor(String token, String baseUrl, Boolean useTestEnvironment)
+   at Telegram.Bot.TelegramBotClient..ctor(String token, HttpClient httpClient)
+   at QuizWebApi_Bot.Controllers.BotController.PostUpdate(Update update, CancellationToken cts) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Controllers\BotController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at QuizWebApi_Bot.Middleware.QuizWebApiErrorMiddleware.Invoke(HttpContext httpContext) in C:\C#\WepProjects\QuizWebApi_Bot\QuizWebApi_Bot\Middleware\QuizWebApiErrorMiddleware.cs:line 18

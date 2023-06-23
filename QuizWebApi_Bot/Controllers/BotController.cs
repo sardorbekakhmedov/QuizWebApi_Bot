@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using QuizWebApi_Bot.Entities;
 using QuizWebApi_Bot.Interfaces;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types;
@@ -12,17 +14,20 @@ public class BotController : ControllerBase
 {
     private readonly IQuestionRepository _questionRepository;
     private readonly IUserRepository _userRepository;
+    private readonly TelegramToken _token;
 
-    public BotController(IQuestionRepository questionRepository, IUserRepository userRepository)
+    public BotController(IQuestionRepository questionRepository, IUserRepository userRepository,
+        IOptions<TelegramToken> token)
     {
         _questionRepository = questionRepository;
         _userRepository = userRepository;
+        _token = token.Value;
     }
 
     [HttpPost("update")]
     public async Task<IActionResult> PostUpdate([FromBody] Update update, CancellationToken cts)
     {
-        var bot = new TelegramBotClient("token");
+        var bot = new TelegramBotClient(_token.TgToken);
 
         var (messageText, firstName, messageId, chatId, isSuccess) = GetMessage(update);
 

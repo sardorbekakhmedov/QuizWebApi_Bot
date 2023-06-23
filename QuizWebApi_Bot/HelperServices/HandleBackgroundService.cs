@@ -1,4 +1,6 @@
-﻿using QuizWebApi_Bot.Interfaces;
+﻿using Microsoft.Extensions.Options;
+using QuizWebApi_Bot.Entities;
+using QuizWebApi_Bot.Interfaces;
 using Telegram.Bot;
 using Telegram.Bot.Types.ReplyMarkups;
 using File = System.IO.File;
@@ -9,10 +11,12 @@ namespace QuizWebApi_Bot.HelperServices;
 public class HandleBackgroundService : BackgroundService
 {
     private readonly IServiceProvider _services;
+    private readonly TelegramToken _token;
 
-    public HandleBackgroundService(IServiceProvider services)
+    public HandleBackgroundService(IServiceProvider services, IOptions<TelegramToken> token)
     {
         _services = services;
+        _token = token.Value;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -29,7 +33,7 @@ public class HandleBackgroundService : BackgroundService
 
     private async Task SendMessageAsync(CancellationToken cancellationToken)
     {
-        var botClient = new TelegramBotClient("token");
+        var botClient = new TelegramBotClient(_token.TgToken);
 
         await using AsyncServiceScope serviceScope = _services.CreateAsyncScope();
 
