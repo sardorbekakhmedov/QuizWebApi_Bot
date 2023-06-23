@@ -39,7 +39,7 @@ public class BotController : ControllerBase
                       "\nSavol jo'natishni tiklash uchun  /startmessage  buyrug'ini yuboring",
                 cancellationToken: cts);
 
-            await _userRepository.AddUserAsync(chatId, firstName ?? "No name");
+            await _userRepository.AddUserAsync(chatId, firstName);
         }
         else if (messageText == "/startmessage")
         {
