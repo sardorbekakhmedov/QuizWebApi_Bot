@@ -11,6 +11,7 @@ public class UserStats
     public int TotalQuestionsSent { get; set; } // => QuestionCollection.Count;
     public int TotalQuestionsAnswered { get; set; }
     public int CorrectlyAnswered { get; set; }
+    public bool NoSentMessage { get; set; }
 
     //  public List<QuestionCollection> QuestionCollection { get; set; } = new();
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

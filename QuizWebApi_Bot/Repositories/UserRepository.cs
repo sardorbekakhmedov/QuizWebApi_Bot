@@ -15,6 +15,17 @@ public class UserRepository : IUserRepository
         _userStats = db.GetCollection<UserStats>("user_stats");
     }
 
+    public async Task NoSentMessageAsync(long userChatId, bool sendMessage)
+    {
+        var user = await GetUserAsync(userChatId);
+
+        user.NoSentMessage = sendMessage;
+        user.UpdatedAt = DateTime.UtcNow;
+
+        var filter = Builders<UserStats>.Filter.Eq(u => u.UserId, userChatId);
+
+        await _userStats.ReplaceOneAsync(filter, user);
+    }
 
     public async Task AddUserAsync(long userChatId, string userNAme)
     {
@@ -112,7 +123,7 @@ public class UserRepository : IUserRepository
 
     public async Task<List<UserStats>> GetAllUsersAsync()
     {
-        return await (await _userStats.FindAsync(_ => true)).ToListAsync();
+        return await (await _userStats.FindAsync(user => true && !user.NoSentMessage)).ToListAsync();
     }
 
 

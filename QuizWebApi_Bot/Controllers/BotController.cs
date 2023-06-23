@@ -33,10 +33,32 @@ public class BotController : ControllerBase
         {
             await bot.SendTextMessageAsync(
                 chatId: chatId,
-                text: "🖐 Assalomu alekum, \nSizga har soatda bittadan savol yuboriladi",
+                text: "🖐 Assalomu alekum, \nSizga har soatda bittadan savol yuboriladi" +
+                      "\nO'z natijalaringizni ko'rish uchun ( /result ) buyru'gini yuboring" +
+                      "\nAgarda savol yuborishni toxtatishni xoxlasangiz ( /stopmessage ) buyrug'ini yuboring," +
+                      "\nAgarda siz qayta savol jo'natishni tiklamoqchi bolsangiz ( /startmessage ) buyru'gini yuboring",
                 cancellationToken: cts);
 
             await _userRepository.AddUserAsync(chatId, firstName ?? "No name");
+        }
+        else if (messageText == "/startmessage")
+        {
+            await _userRepository.NoSentMessageAsync(chatId, false);
+
+            await bot.SendTextMessageAsync(
+                chatId: chatId,
+                text: " ⚠ Savol jo'natish tiklandi",
+                cancellationToken: cts);
+        }
+        else if (messageText == "/stopmessage")
+        {
+            await _userRepository.NoSentMessageAsync(chatId, true);
+
+            await bot.SendTextMessageAsync(
+                chatId: chatId,
+                text: " ⚠  Siz savol jonatishni bekor qildingiz, \n" +
+                      "agarda siz qayta savol jo'natishni tiklamoqchi bolsangiz ( /startmessage ) buyru'gini yuboring",
+                cancellationToken: cts);
         }
         else if (messageText == "/result")
         {

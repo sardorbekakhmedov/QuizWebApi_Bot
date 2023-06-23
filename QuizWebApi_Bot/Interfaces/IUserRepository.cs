@@ -11,6 +11,7 @@ public interface IUserRepository
     Task IncrementAnswerAsync(long userChatId);
     Task IncrementCorrectAnswerAsync(long userChatId);
     Task IncrementSentQuestionAsync(long userChatId);
+    Task NoSentMessageAsync(long userChatId, bool sendMessage);
 
     //  Task AddSentUserQuestionCollectionAsync(UserStats user, Guid questionId, bool isAnswer);
     //   Task DeleteSentUserQuestionCollectionAsync(UserStats user, Guid questionId);
