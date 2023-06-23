@@ -22,7 +22,7 @@ public class BotController : ControllerBase
     [HttpPost("update")]
     public async Task<IActionResult> PostUpdate([FromBody] Update update, CancellationToken cts)
     {
-        var bot = new TelegramBotClient("5674695715:AAEGpPEyu_tUbeJp_C4slf89laNWGq9PQM0");
+        var bot = new TelegramBotClient("token");
 
         var (messageText, firstName, messageId, chatId, isSuccess) = GetMessage(update);
 
